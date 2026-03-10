@@ -1,0 +1,87 @@
+<section id="hero-section" class="hero">
+
+  <h1 id="hero-title">Anonymous9x VIP Script</h1>
+
+  <div class="status-ticker-wrap">
+    <div class="status-ticker" id="statusTicker"></div>
+  </div>
+
+  <div class="hero-buttons">
+    <a href="#features-section">
+      <button class="btn">View Features</button>
+    </a>
+    <a href="#howtobuy-section">
+      <button class="btn">How To Buy</button>
+    </a>
+    <a href="https://discord.gg/ptvyFfK3pU" target="_blank">
+      <button class="btn discord">Join Discord</button>
+    </a>
+  </div>
+
+</section>
+
+<style>
+  #hero-title {
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 2px;
+  }
+
+  #hero-title .char {
+    display: inline-block;
+  }
+
+  #hero-title .char.glitching {
+    color: #ffffff;
+    text-shadow: 0 0 8px #fff, 0 0 2px #fff;
+  }
+
+  .status-ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 32px;
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  .status-ticker {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: tickerScroll 16s linear infinite;
+    gap: 0 40px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .status-ticker .tick-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .status-ticker .tick-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    flex-shrink: 0;
+  }
+
+  .status-ticker .tick-hl {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  @keyframes tickerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
