@@ -8,16 +8,19 @@ async function loadComponent(id, file) {
   document.getElementById(id).innerHTML = html;
 }
 
-// Load hero first, then init its JS
-loadComponent("hero", "components/hero.html").then(() => {
+// ── Tunggu SEMUA komponen selesai load baru init JS ──
+// Ini fix utama: script-container & hero-title harus ada di DOM dulu
+Promise.all([
+  loadComponent("navbar",   "components/navbar.html"),
+  loadComponent("hero",     "components/hero.html"),
+  loadComponent("features", "components/features.html"),
+  loadComponent("howtobuy", "components/howtobuy.html"),
+  loadComponent("footer",   "components/footer.html"),
+]).then(() => {
   initHeroGlitch();
   initStatusTicker();
+  loadScriptCards();
 });
-
-loadComponent("navbar",   "components/navbar.html");
-loadComponent("features", "components/features.html");
-loadComponent("howtobuy", "components/howtobuy.html");
-loadComponent("footer",   "components/footer.html");
 
 
 // ─────────────────────────────────────────────
@@ -25,28 +28,26 @@ loadComponent("footer",   "components/footer.html");
 // ─────────────────────────────────────────────
 
 function initHeroGlitch() {
-  const titleEl   = document.getElementById("hero-title");
+  const titleEl = document.getElementById("hero-title");
   if (!titleEl) return;
 
   const ORIGINAL  = "Anonymous9x VIP Script";
   const GLITCH_CH = "A#0N@X9!%$&*<>|1M?=+~";
 
-  // Split into char spans
   titleEl.innerHTML = ORIGINAL.split("").map(ch =>
     ch === " "
       ? '<span class="char">&nbsp;</span>'
       : `<span class="char">${ch}</span>`
   ).join("");
 
-  const spans    = Array.from(titleEl.querySelectorAll(".char"));
-  const origArr  = ORIGINAL.split("");
+  const spans   = Array.from(titleEl.querySelectorAll(".char"));
+  const origArr = ORIGINAL.split("");
 
   function randCh() {
     return GLITCH_CH[Math.floor(Math.random() * GLITCH_CH.length)];
   }
 
   function glitchOne() {
-    // Only non-space chars
     const pool   = spans.filter((_, i) => origArr[i] !== " ");
     const target = pool[Math.floor(Math.random() * pool.length)];
     const idx    = spans.indexOf(target);
@@ -77,12 +78,12 @@ function initStatusTicker() {
   if (!el) return;
 
   const items = [
-    { label: "STATUS",    value: "READY",            hl: true  },
-    { label: "EXECUTOR",  value: "DELTA SUPPORTED",  hl: false },
-    { label: "USERS",   value: "6+ ACTIVE",        hl: false },
-    { label: "VERSION",   value: "VIP 2.1",          hl: false },
-    { label: "PLATFORM",  value: "MOBILE/IOS/PC",      hl: false },
-    { label: "KEY STOCK",    value: "CHECK DISCORD",            hl: true  },
+    { label: "STATUS",   value: "READY",           hl: true  },
+    { label: "EXECUTOR", value: "DELTA SUPPORTED",  hl: false },
+    { label: "SCRIPTS",  value: "35 ACTIVE",        hl: false },
+    { label: "VERSION",  value: "VIP 2.0",          hl: false },
+    { label: "PLATFORM", value: "MOBILE / PC",      hl: false },
+    { label: "SERVER",   value: "ONLINE",            hl: true  },
   ];
 
   function buildItems() {
@@ -95,13 +96,12 @@ function initStatusTicker() {
     `).join("");
   }
 
-  // Duplicate for seamless infinite scroll
   el.innerHTML = buildItems() + buildItems();
 }
 
 
 // ─────────────────────────────────────────────
-//  Scanline Typewriter (for script card names)
+//  Scanline Typewriter (script card names)
 // ─────────────────────────────────────────────
 
 function scanlineType(el, text, opts = {}) {
@@ -166,98 +166,104 @@ function scanlineType(el, text, opts = {}) {
 //  Script Cards Loader
 // ─────────────────────────────────────────────
 
-fetch("data/scripts.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("script-container");
+function loadScriptCards() {
+  const container = document.getElementById("script-container");
+  if (!container) return;
 
-    if (!document.getElementById("card-style")) {
-      const style = document.createElement("style");
-      style.id = "card-style";
-      style.textContent = `
-        #script-container {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
-          padding: 20px;
-        }
-        .script-card {
-          position: relative;
-          background: transparent;
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 6px;
-          padding: 22px 20px 18px;
-          flex: 1 1 240px;
-          max-width: 300px;
-          color: #fff;
-          overflow: hidden;
-          transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .script-card::before, .script-card::after {
-          content: "";
-          position: absolute;
-          width: 10px; height: 10px;
-          border-color: rgba(255,255,255,0.5);
-          border-style: solid;
-          transition: width 0.3s, height 0.3s, border-color 0.3s;
-        }
-        .script-card::before { top:-1px; left:-1px; border-width: 2px 0 0 2px; }
-        .script-card::after  { bottom:-1px; right:-1px; border-width: 0 2px 2px 0; }
-        .script-card:hover {
-          border-color: rgba(255,255,255,0.55);
-          box-shadow: 0 0 18px rgba(255,255,255,0.07);
-        }
-        .script-card:hover::before, .script-card:hover::after {
-          width: 18px; height: 18px;
-          border-color: #ffffff;
-        }
-        .script-card .card-icon {
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
-          margin: 0 0 10px;
-        }
-        .script-card .card-name {
-          font-size: 1rem;
-          font-weight: 700;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          margin-bottom: 8px;
-          min-height: 1.4em;
-        }
-        .script-card .card-desc {
-          font-size: 0.78rem;
-          color: rgba(255,255,255,0.45);
-          line-height: 1.5;
-          margin: 0;
-        }
-      `;
-      document.head.appendChild(style);
-    }
+  if (!document.getElementById("card-style")) {
+    const style = document.createElement("style");
+    style.id = "card-style";
+    style.textContent = `
+      #script-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+      }
+      .script-card {
+        position: relative;
+        background: rgba(8,8,8,0.6);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 6px;
+        padding: 22px 20px 18px;
+        flex: 1 1 240px;
+        max-width: 300px;
+        color: #fff;
+        overflow: hidden;
+        backdrop-filter: blur(8px);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      }
+      .script-card::before, .script-card::after {
+        content: "";
+        position: absolute;
+        width: 10px; height: 10px;
+        border-color: rgba(255,255,255,0.5);
+        border-style: solid;
+        transition: width 0.3s, height 0.3s, border-color 0.3s;
+      }
+      .script-card::before { top:-1px; left:-1px; border-width: 2px 0 0 2px; }
+      .script-card::after  { bottom:-1px; right:-1px; border-width: 0 2px 2px 0; }
+      .script-card:hover {
+        border-color: rgba(255,255,255,0.55);
+        box-shadow: 0 0 18px rgba(255,255,255,0.07);
+        transform: translateY(-3px);
+      }
+      .script-card:hover::before, .script-card:hover::after {
+        width: 18px; height: 18px;
+        border-color: #ffffff;
+      }
+      .script-card .card-icon {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.3);
+        margin: 0 0 10px;
+      }
+      .script-card .card-name {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        min-height: 1.4em;
+      }
+      .script-card .card-desc {
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.4);
+        line-height: 1.5;
+        margin: 0;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
-    data.forEach((script, i) => {
-      const card = document.createElement("div");
-      card.className = "script-card";
-      card.innerHTML = `
-        <p class="card-icon">${script.icon}</p>
-        <div class="card-name"></div>
-        <p class="card-desc">${script.desc}</p>
-      `;
-      container.appendChild(card);
+  fetch("data/scripts.json")
+    .then(res => res.json())
+    .then(data => {
+      data.forEach((script, i) => {
+        const card = document.createElement("div");
+        card.className = "script-card";
+        card.innerHTML = `
+          <p class="card-icon">${script.icon}</p>
+          <div class="card-name"></div>
+          <p class="card-desc">${script.desc}</p>
+        `;
+        container.appendChild(card);
 
-      const nameEl = card.querySelector(".card-name");
-      setTimeout(() => {
-        scanlineType(nameEl, script.name, {
-          typeSpeed:   60,
-          deleteSpeed: 35,
-          pauseAfter:  2000 + i * 80,
-          pauseBefore: 500,
-        });
-      }, i * 250);
-    });
-  });
+        const nameEl = card.querySelector(".card-name");
+        setTimeout(() => {
+          scanlineType(nameEl, script.name, {
+            typeSpeed:   60,
+            deleteSpeed: 35,
+            pauseAfter:  2000 + i * 80,
+            pauseBefore: 500,
+          });
+        }, i * 250);
+      });
+    })
+    .catch(err => console.error("Failed to load scripts.json:", err));
+}
 
 
 // ─────────────────────────────────────────────
@@ -269,12 +275,11 @@ const progressBar = document.getElementById("progressBar");
 const bootText    = document.getElementById("bootText");
 
 if (glitchText) {
-  const text  = "Created by Anonymous9x";
-  const chars = "!@#$%^&*()_+-={}[]<>?/|1234567890";
-
-  function randomChar() { return chars[Math.floor(Math.random() * chars.length)]; }
+  const loaderText  = "Created by Anonymous9x";
+  const glitchChars = "!@#$%^&*()_+-={}[]<>?/|1234567890";
+  function randomChar() { return glitchChars[Math.floor(Math.random() * glitchChars.length)]; }
   function glitchEffect() {
-    let arr = text.split("");
+    let arr = loaderText.split("");
     const n = Math.floor(Math.random() * 2) + 1;
     for (let i = 0; i < n; i++) {
       const idx = Math.floor(Math.random() * arr.length);
@@ -296,11 +301,10 @@ if (bootText) {
     "System ready..."
   ];
   let bootIndex = 0;
-  function bootAnimation() {
+  setInterval(() => {
     bootText.innerText = bootMessages[bootIndex];
     bootIndex = (bootIndex + 1) % bootMessages.length;
-  }
-  setInterval(bootAnimation, 900);
+  }, 900);
 }
 
 if (progressBar) {
@@ -311,10 +315,9 @@ if (progressBar) {
     if (progress >= 100) {
       clearInterval(loading);
       setTimeout(() => {
-        document.getElementById("loader").style.opacity = "0";
-        setTimeout(() => {
-          document.getElementById("loader").style.display = "none";
-        }, 800);
+        const loader = document.getElementById("loader");
+        loader.style.opacity = "0";
+        setTimeout(() => { loader.style.display = "none"; }, 800);
       }, 600);
     }
   }, 60);
@@ -327,13 +330,13 @@ if (progressBar) {
 
 const matrixCanvas = document.getElementById("matrix");
 if (matrixCanvas) {
-  const mCtx     = matrixCanvas.getContext("2d");
+  const mCtx = matrixCanvas.getContext("2d");
   matrixCanvas.width  = window.innerWidth;
   matrixCanvas.height = window.innerHeight;
 
   const fontSize = 16;
-  const cols     = matrixCanvas.width / fontSize;
-  const mDrops   = Array.from({ length: cols }, () => 1);
+  const mCols    = Math.floor(matrixCanvas.width / fontSize);
+  const mDrops   = Array.from({ length: mCols }, () => 1);
 
   function drawLoaderMatrix() {
     mCtx.fillStyle = "rgba(0,0,0,0.05)";
