@@ -308,6 +308,8 @@ if (bootText) {
 }
 
 if (progressBar) {
+document.body.style.overflow = "hidden"; // kunci scroll saat loading
+  
   let progress = 0;
   const loading = setInterval(() => {
     progress += Math.random() * 2;
@@ -317,7 +319,9 @@ if (progressBar) {
       setTimeout(() => {
         const loader = document.getElementById("loader");
         loader.style.opacity = "0";
-        setTimeout(() => { loader.style.display = "none"; }, 800);
+        setTimeout(() => { loader.style.display = "none";
+       document.body.style.overflow = ""; // buka scroll setelah loader hilang                  
+        }, 800);
       }, 600);
     }
   }, 60);
