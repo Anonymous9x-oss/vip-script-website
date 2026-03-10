@@ -31,7 +31,7 @@ function initHeroGlitch() {
   const titleEl = document.getElementById("hero-title");
   if (!titleEl) return;
 
-  const ORIGINAL  = "Anonymous9x VIP Script";
+  const ORIGINAL  = "Anonymous9x VIP";
   const GLITCH_CH = "A#0N@X9!%$&*<>|1M?=+~";
 
   titleEl.innerHTML = ORIGINAL.split("").map(ch =>
