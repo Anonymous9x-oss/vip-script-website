@@ -33,5 +33,9 @@
   {"name": "KillAura Npc", "icon": "Main", "desc": "kill all npc with sigma aura that radiates from you, studs that can be adjusted flexibly"},
   {"name": "SambungKata", "icon": "Main", "desc": "script for in sambung kata, taken from kkbi"},
   {"name": "SambungKata Collab", "icon": "Main", "desc": "special collab with FIQQZR7"},
-  {"name": "FakeDonate Collab", "icon": "Chaos", "desc": "special collab with FIQQZR7"}
+  {"name": "FakeDonate Collab", "icon": "Chaos", "desc": "special collab with FIQQZR7"},
+  {"name": "Xray", "icon": "Misc", "desc": "can see through all parts,houses etc"},
+  {"name": "Full Rtx", "icon": "Misc", "desc": "full preset hd with filters like rtx panel"},
+  {"name": "Spiderman Walk", "icon": "Main", "desc": "FE can walk on walls etc"},
+  {"name": "Backdoor Tester", "icon": "Chaos", "desc": "tools and backdoor scan test, if there is a backdoor, you can run require"}
 ]
