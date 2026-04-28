@@ -28,7 +28,7 @@
   {"name": "Fun3", "icon": "Vis/FE", "desc": "features for fun in one ui panel with 3 features"},
   {"name": "Freecam", "icon": "Main", "desc": "fly freely with your camera like a drone"},
   {"name": "Executor", "icon": "Misc", "desc": "loader executor that can run other scripts here"},
-  {"name": "Skybox", "icon": "Chaos", "desc": "can do skybox FE with settings to set up a complete skybox, with the condition of purchasing the pro builder bundle"},
+  {"name": "Glitcher Crash", "icon": "Chaos", "desc": "Super chaotic glitcher with many mode, if you have a grudge you can use this"},
   {"name": "God Mode", "icon": "Main", "desc": "Immune to all obstacle damage, ragdoll damage, anti-slap, etc. with 11 layer fallback function"},
   {"name": "KillAura Npc", "icon": "Main", "desc": "kill all npc with sigma aura that radiates from you, studs that can be adjusted flexibly"},
   {"name": "SambungKata", "icon": "Main", "desc": "script for in sambung kata, taken from kkbi"},
