@@ -83,7 +83,7 @@ function initStatusTicker() {
     { label: "KEY STOCK",  value: "CHECK DISCORD",        hl: false },
     { label: "VERSION",  value: "VIP 2.1",          hl: false },
     { label: "PLATFORM", value: "MOBILE /IOS/PC",      hl: false },
-    { label: "USERS",   value: "6+ ACTIVE",            hl: true  },
+    { label: "USERS",   value: "12+ ACTIVE",            hl: true  },
   ];
 
   function buildItems() {
