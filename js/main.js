@@ -79,7 +79,7 @@ function initStatusTicker() {
 
   const items = [
     { label: "STATUS",   value: "READY",           hl: true  },
-    { label: "EXECUTOR", value: "DELTA SUPPORTED",  hl: false },
+    { label: "EXECUTOR", value: "DELTA,ARCEUSX SUPPORTED",  hl: false },
     { label: "KEY STOCK",  value: "CHECK DISCORD",        hl: false },
     { label: "VERSION",  value: "VIP 2.1",          hl: false },
     { label: "PLATFORM", value: "MOBILE /IOS/PC",      hl: false },
