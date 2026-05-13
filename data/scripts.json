@@ -4,7 +4,7 @@
   {"name": "Fly Noclip", "icon": "Main", "desc": "universal mobile fly with analog, keyboard with wasd"},
   {"name": "ESP Master", "icon": "Main", "desc": "can see other players without range"},
   {"name": "Speed Walk", "icon": "Main", "desc": "easily adjust your running speed"},
-  {"name": "Ghost Mode", "icon": "Main", "desc": "set yourself to be invisible so you can become a ghost equipped with speedboost"},
+  {"name": "Ghost Mode", "icon": "FE", "desc": "set yourself to be invisible so you can become a ghost equipped with speedboost"},
   {"name": "No Clip", "icon": "Main", "desc": "set you up so you can go through walls or other parts"},
   {"name": "Infinite Jump", "icon": "Main", "desc": "you can do jump spam"},
   {"name": "Spectator Full", "icon": "Player", "desc": "Spectator All Player with tp, follow, kick features"},
