@@ -31,11 +31,14 @@
   {"name": "Glitcher Crash", "icon": "Chaos", "desc": "Super chaotic glitcher with many mode, if you have a grudge you can use this"},
   {"name": "God Mode", "icon": "Main", "desc": "Immune to all obstacle damage, ragdoll damage, anti-slap, etc. with 11 layer fallback function"},
   {"name": "KillAura Npc", "icon": "Main", "desc": "kill all npc with sigma aura that radiates from you, studs that can be adjusted flexibly"},
-  {"name": "SambungKata", "icon": "Main", "desc": "script for in sambung kata, taken from kkbi"},
-  {"name": "SambungKata Collab", "icon": "Main", "desc": "special collab with FIQQZR7"},
+  {"name": "Set Car Collab", "icon": "Main", "desc": "special collab with FIQQZR7 (universal)"},
+  {"name": "SambungKata Collab", "icon": "Game", "desc": "special collab with FIQQZR7"},
   {"name": "Manager Detec", "icon": "Chaos", "desc": "to scan full remote clients, marketplaces, etc."},
   {"name": "Xray", "icon": "Misc", "desc": "can see through all parts,houses etc"},
   {"name": "Full Rtx", "icon": "Misc", "desc": "full preset hd with filters like rtx panel"},
   {"name": "Spiderman Walk", "icon": "Main", "desc": "FE can walk on walls etc"},
-  {"name": "Backdoor Tester", "icon": "Chaos", "desc": "tools and backdoor scan test, if there is a backdoor, you can run require"}
+  {"name": "Backdoor Tester", "icon": "Chaos", "desc": "tools and backdoor scan test, if there is a backdoor, you can run require"},
+  {"name": "Blox Fruit", "icon": "VIP", "desc": "Premium blox fruit script with complete features"},
+  {"name": "Evade", "icon": "VIP", "desc": "Premium Evade script with complete features"},
+  {"name": "Spam SlankChat", "icon": "Chaos", "desc": "chat translator tool with retro slank language + spam For fun"}
 ]
