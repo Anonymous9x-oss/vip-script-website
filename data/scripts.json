@@ -40,5 +40,6 @@
   {"name": "Backdoor Tester", "icon": "Chaos", "desc": "tools and backdoor scan test, if there is a backdoor, you can run require"},
   {"name": "Blox Fruit", "icon": "VIP", "desc": "Premium blox fruit script with complete features"},
   {"name": "Evade", "icon": "VIP", "desc": "Premium Evade script with complete features"},
-  {"name": "Spam SlankChat", "icon": "Chaos", "desc": "chat translator tool with retro slank language + spam For fun"}
+  {"name": "Spam SlankChat", "icon": "Chaos", "desc": "chat translator tool with retro slank language + spam For fun"},
+  {"name": "Skybox", "icon": "Chaos", "desc": "Skybox Fe Universal New chaos"}
 ]
