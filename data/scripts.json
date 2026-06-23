@@ -41,5 +41,8 @@
   {"name": "Blox Fruit", "icon": "VIP", "desc": "Premium blox fruit script with complete features"},
   {"name": "Evade", "icon": "VIP", "desc": "Premium Evade script with complete features"},
   {"name": "Spam SlankChat", "icon": "Chaos", "desc": "chat translator tool with retro slank language + spam For fun"},
-  {"name": "Skybox", "icon": "Chaos", "desc": "Skybox Fe Universal New chaos"}
+  {"name": "Skybox", "icon": "Chaos", "desc": "Skybox Fe Universal New chaos"},
+  {"name": "Animated Pack", "icon": "FE", "desc": "complete collection of animated libraries FE"},
+  {"name": "DDS Collab", "icon": "DDS", "desc": "for the game drag drive simulator collab with fiqqzr7"},
+  {"name": "VD Collab", "icon": "VD", "desc": "for the game violance district collab with fiqqzr7"}
 ]
